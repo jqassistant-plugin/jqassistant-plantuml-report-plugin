@@ -12,7 +12,7 @@ For more information on jQAssistant see https://jqassistant.org[^].
 
 == Using the jqassistant-asciidoc-report-plugin
 
-NOTE:: Starting from jqassistant-rdbms-plugin v2.0.0, the AsciiDoc-Report-Plugin resides under jqassistant-plugin.
+NOTE:: Starting from jqassistant-asciidoc-report-plugin v2.0.0, the AsciiDoc-Report-Plugin resides under jqassistant-plugin.
 Therefore, not only the repository location changed but also group id and artifact id were adapted from `com.buschmais.jqassistant.plugin:asciidoc-report` to `org.jqassistant.plugin:jqassistant-asciidoc-report-plugin`.
 
 NOTE:: From jQAssistant v2.0.0 onwards, it is not part of the core distribution anymore and a manual configuration as shown below is required.
