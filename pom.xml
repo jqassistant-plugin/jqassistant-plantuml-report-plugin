@@ -48,8 +48,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jqa-plugin-common.version>1.12.2</jqa-plugin-common.version>
-        <jqa-java-plugin.version>1.12.2</jqa-java-plugin.version>
+        <jqa-plugin-common.version>2.0.0-M1</jqa-plugin-common.version>
+        <jqa-java-plugin.version>2.0.0-M1</jqa-java-plugin.version>
         <org.jsoup.version>1.10.2</org.jsoup.version>
     </properties>
 
@@ -137,5 +137,22 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <skip>false</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
