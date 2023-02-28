@@ -17,29 +17,13 @@ Therefore, not only the repository location changed but also group id and artifa
 
 NOTE:: From jQAssistant v2.0.0 onwards, it is not part of the core distribution anymore and a manual configuration as shown below is required.
 
-[source, xml]
+[source, yaml]
 ----
-<plugin>
-    <groupId>com.buschmais.jqassistant</groupId>
-    <artifactId>jqassistant-maven-plugin</artifactId>
-    <version>${jqassistant.version}</version>
-    <executions>
-        <execution>
-            <id>default-cli</id>
-            <goals>
-                <goal>scan</goal>
-                <goal>analyze</goal>
-            </goals>
-        </execution>
-    </executions>
-    <dependencies>
-        <dependency> // <1>
-            <groupId>org.jqassistant.plugin</groupId>
-            <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
-            <version>${jqassistant.asciidoc-report-plugin.version}</version>
-        </dependency>
-    </dependencies>
-</plugin>
+jqassistant:
+  plugins:
+    - group-id: org.jqassistant.plugin <1>
+      artifact-id: jqassistant-asciidoc-report-plugin
+      version: ${jqassistant.asciidoc-report-plugin.version}
 ----
 <1> Dependency to the AsciiDoc Report plugin
 
