@@ -2,15 +2,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.buschmais.jqassistant.plugin</groupId>
+        <groupId>org.jqassistant.plugin</groupId>
         <artifactId>parent</artifactId>
-        <version>1.13.0-SNAPSHOT</version>
+        <version>2.0.0-M2</version>
         <relativePath/>
     </parent>
 
-    <groupId>com.buschmais.jqassistant.plugin</groupId>
-    <artifactId>asciidoc-report</artifactId>
-    <version>1.13.0-SNAPSHOT</version>
+    <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
 
     <name>jQAssistant AsciiDoc Report Plugin</name>
     <description>The jQAssistant plugin for creating reports from AsciiDoc files.</description>
@@ -21,6 +20,19 @@
         <url>https://jqassistant.org</url>
     </organization>
 
+    <developers>
+        <developer>
+            <id>dirk-mahler</id>
+            <name>Dirk Mahler</name>
+            <email>dirk.mahler@buschmais.com</email>
+        </developer>
+        <developer>
+            <id>stephan.pirnbaum</id>
+            <name>Stephan Pirnbaum</name>
+            <email>stephan.pirnbaum@buschmais.com</email>
+        </developer>
+    </developers>
+
     <licenses>
         <license>
             <name>GNU General Public License, v3</name>
@@ -29,15 +41,15 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:jqassistant/jqa-asciidoc-report-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:jqassistant/jqa-asciidoc-report-plugin.git</developerConnection>
-        <url>https://github.com/jqassistant/jqa-asciidoc-report-plugin</url>
+        <connection>scm:git:https://github.com/jqassistant-plugin/jqassistant-asciidoc-report-plugin.git</connection>
+        <developerConnection>scm:git:https://github.com/jqassistant-plugin/jqassistant-asciidoc-report-plugin.git</developerConnection>
+        <url>https://github.com/jqassistant-plugin/jqassistant-asciidoc-report-plugin</url>
     </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jqa-plugin-common.version>1.13.0-SNAPSHOT</jqa-plugin-common.version>
-        <jqa-java-plugin.version>1.13.0-SNAPSHOT</jqa-java-plugin.version>
+        <jqa-plugin-common.version>2.0.0-M3</jqa-plugin-common.version>
+        <jqa-java-plugin.version>2.0.0-M3</jqa-java-plugin.version>
         <org.jsoup.version>1.10.2</org.jsoup.version>
     </properties>
 
@@ -124,18 +136,23 @@
             <artifactId>slf4j-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <skip>false</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

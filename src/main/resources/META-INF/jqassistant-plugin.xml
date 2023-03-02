@@ -4,9 +4,9 @@
                     name="jQAssistant AsciiDoc Report Plugin" id="jqa.plugin.asciidocreport">
     <description>Renders AsciiDoc files containing rules to HTML reports including results as tables, diagrams or links to external files.</description>
     <report>
-        <class id="asciidoc">com.buschmais.jqassistant.plugin.asciidocreport.AsciidocReportPlugin</class>
-        <class id="plantuml-component-diagram">com.buschmais.jqassistant.plugin.asciidocreport.plantuml.component.ComponentDiagramReportPlugin</class>
-        <class id="plantuml-sequence-diagram">com.buschmais.jqassistant.plugin.asciidocreport.plantuml.sequence.SequenceDiagramReportPlugin</class>
-        <class id="plantuml-class-diagram">com.buschmais.jqassistant.plugin.asciidocreport.plantuml.clazz.ClassDiagramReportPlugin</class>
+        <class id="asciidoc">org.jqassistant.plugin.asciidocreport.AsciidocReportPlugin</class>
+        <class id="plantuml-component-diagram">org.jqassistant.plugin.asciidocreport.plantuml.component.ComponentDiagramReportPlugin</class>
+        <class id="plantuml-sequence-diagram">org.jqassistant.plugin.asciidocreport.plantuml.sequence.SequenceDiagramReportPlugin</class>
+        <class id="plantuml-class-diagram">org.jqassistant.plugin.asciidocreport.plantuml.clazz.ClassDiagramReportPlugin</class>
     </report>
 </jqassistant-plugin>

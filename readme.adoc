@@ -10,3 +10,22 @@ Furthermore, it provides _++include::[]++_ directives for embedding the results 
 
 For more information on jQAssistant see https://jqassistant.org[^].
 
+== Using the jqassistant-asciidoc-report-plugin
+
+NOTE:: Starting from jqassistant-asciidoc-report-plugin v2.0.0, the AsciiDoc-Report-Plugin resides under jqassistant-plugin.
+Therefore, not only the repository location changed but also group id and artifact id were adapted from `com.buschmais.jqassistant.plugin:asciidoc-report` to `org.jqassistant.plugin:jqassistant-asciidoc-report-plugin`.
+
+NOTE:: From jQAssistant v2.0.0 onwards, it is not part of the core distribution anymore and a manual configuration as shown below is required.
+
+[source, yaml]
+----
+jqassistant:
+  plugins:
+    - group-id: org.jqassistant.plugin <1>
+      artifact-id: jqassistant-asciidoc-report-plugin
+      version: ${jqassistant.asciidoc-report-plugin.version}
+----
+<1> Dependency to the AsciiDoc Report plugin
+
+
+

@@ -1,6 +1,11 @@
 
 = AsciiDoc Report Plugin
 
+== 2.0.0
+
+* Removed Plug-In from the jQAssistant Core Distribution to jqassistant-plugin
+** Group and Artifact Id changed to `org.jqassistant.plugin:jqassistant-asciidoc-report-plugin`
+
 == 1.12.2
 
 * Fixed a problem where Asciidoc reports provided by plugins could not be rendered if the plugins were loaded from `.jqassistant.yml` configurations
