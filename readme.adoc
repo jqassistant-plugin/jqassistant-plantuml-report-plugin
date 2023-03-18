@@ -1,21 +1,16 @@
-= jQAssistant AsciiDoc Report Plugin
+= jQAssistant PlantUML Report Plugin
 
-This is the https://asciidoctor.org/[AsciiDoc^] report plugin for https://jqassistant.org[jQAssistant^].
+This is the https://plantuml.com/[PlantUML^] report plugin for https://jqassistant.org[jQAssistant^].
 
-After an analysis https://asciidoctor.org[Asciidoctor] it renders the input documents that provided rules to HTML documents.
+It provides the capability to render diagrams from the results of concepts and constraints:
 
-It enriches the output by the status of executed rules as well as their results as tables, embedded diagrams or external links (e.g. CSV).
-
-Furthermore, it provides _++include::[]++_ directives for embedding the results of imported rules and summary tables.
+* `plantuml-component-diagram`
+* `plantuml-class-diagram`
+* `plantuml-sequence-diagram`
 
 For more information on jQAssistant see https://jqassistant.org[^].
 
-== Using the jqassistant-asciidoc-report-plugin
-
-NOTE:: Starting from jqassistant-asciidoc-report-plugin v2.0.0, the AsciiDoc-Report-Plugin resides under jqassistant-plugin.
-Therefore, not only the repository location changed but also group id and artifact id were adapted from `com.buschmais.jqassistant.plugin:asciidoc-report` to `org.jqassistant.plugin:jqassistant-asciidoc-report-plugin`.
-
-NOTE:: From jQAssistant v2.0.0 onwards, it is not part of the core distribution anymore and a manual configuration as shown below is required.
+== Using the jqassistant-plantuml-report-plugin
 
 [source, yaml]
 ..jqassistant.yml
@@ -23,10 +18,7 @@ NOTE:: From jQAssistant v2.0.0 onwards, it is not part of the core distribution 
 jqassistant:
   plugins:
     - group-id: org.jqassistant.plugin <1>
-      artifact-id: jqassistant-asciidoc-report-plugin
-      version: ${jqassistant.asciidoc-report-plugin.version}
+      artifact-id: jqassistant-plantuml-report-plugin
+      version: ${jqassistant.plantuml-report-plugin.version}
 ----
-<1> Dependency to the AsciiDoc Report plugin
-
-
-
+<1> Dependency to the PlantUML Report plugin
