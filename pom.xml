@@ -8,11 +8,11 @@
         <relativePath />
     </parent>
 
-    <artifactId>jqassistant-asciidoc-report-plugin</artifactId>
+    <artifactId>jqassistant-plantuml-report-plugin</artifactId>
     <version>2.0.0-SNAPSHOT</version>
 
-    <name>jQAssistant AsciiDoc Report Plugin</name>
-    <description>The jQAssistant plugin for creating reports from AsciiDoc files.</description>
+    <name>jQAssistant PlantUML Report Plugin</name>
+    <description>The jQAssistant plugin for rendering PlantUML diagrams from rule results.</description>
     <url>https://jqassistant.org/</url>
 
     <organization>
@@ -41,9 +41,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:https://github.com/jqassistant-plugin/jqassistant-asciidoc-report-plugin.git</connection>
-        <developerConnection>scm:git:https://github.com/jqassistant-plugin/jqassistant-asciidoc-report-plugin.git</developerConnection>
-        <url>https://github.com/jqassistant-plugin/jqassistant-asciidoc-report-plugin</url>
+        <connection>scm:git:https://github.com/jqassistant-plugin/jqassistant-plantuml-report-plugin.git</connection>
+        <developerConnection>scm:git:https://github.com/jqassistant-plugin/jqassistant-plantuml-report-plugin.git</developerConnection>
+        <url>https://github.com/jqassistant-plugin/jqassistant-plantuml-report-plugin</url>
       <tag>HEAD</tag>
   </scm>
 

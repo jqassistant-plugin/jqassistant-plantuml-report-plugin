@@ -1,40 +1,5 @@
-
-= AsciiDoc Report Plugin
+= PlantUML Report Plugin
 
 == 2.0.0
 
-* Removed Plug-In from the jQAssistant Core Distribution to jqassistant-plugin
-** Group and Artifact Id changed to `org.jqassistant.plugin:jqassistant-asciidoc-report-plugin`
-
-== 1.12.2
-
-* Fixed a problem where Asciidoc reports provided by plugins could not be rendered if the plugins were loaded from `.jqassistant.yml` configurations
-
-== 1.12.1
-
-* Added sorting of rules included by `jQA:Rules` (alphabetically by rule id)
-* Added rule id to hover of rule result
-* Fixed escaping of node and relationship labels in component diagrams
-
-== 1.12.0
-
-* Support the status `WARNING` in the summary table and rule results
-* Added support for rendering PlantUML using the Eclipse Layout Kernel (Elk)
-* JDOT was replaced by Smetana for rendering the PlantUML diagram when no local GraphViz installation is used.
-* Delayed initialization of PlantUML to avoid unnecessary messages if GraphViz is not installed
-* Removed deprecation of `asciidoc.report.rule.directory`
-
-== 1.11.0
-
-* Added support for rendering AsciiDoc files as reports which are provided by plugins and contain rules.
-* Deprecated the report property `asciidoc.report.rule.directory`, it will be removed in future versions.
-
-== 1.9.0
-
-* The PlantUML diagram plugin now automatically selects GraphViz (prefered) or JDOT for rendering if not explicitly configured
-
-== 1.8.0
-
-* Include AsciiDoc Report plugin into jQAssistant main project. Note that for upgrading to 1.8 any existing dependency to the AsciiDoc Report plugin from the contrib area must be removed
-* Renamed properties `asciidoc.report.plantuml.format` & `asciidoc.report.plantuml.rendermode` to `plantuml.report.format` & `plantuml.report.rendermode`
-
+* Extracted PlantUML report plugin from https://github.com/jqassistant-plugin/jqassistant-asciidoc-report-plugin[Asciidoc report plugin] to
