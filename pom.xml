@@ -44,14 +44,18 @@
         <connection>scm:git:https://github.com/jqassistant-plugin/jqassistant-plantuml-report-plugin.git</connection>
         <developerConnection>scm:git:https://github.com/jqassistant-plugin/jqassistant-plantuml-report-plugin.git</developerConnection>
         <url>https://github.com/jqassistant-plugin/jqassistant-plantuml-report-plugin</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jqa-plugin-common.version>2.0.0-M3</jqa-plugin-common.version>
         <jqa-java-plugin.version>2.0.0-M3</jqa-java-plugin.version>
         <org.jsoup.version>1.10.2</org.jsoup.version>
+        <net.sourceforge.plantuml.version>1.2022.12</net.sourceforge.plantuml.version>
+        <org.eclipse.elk.version>0.7.1</org.eclipse.elk.version>
+
+        <com.buschmais.jqassistant.version>2.0.0-SNAPSHOT</com.buschmais.jqassistant.version>
     </properties>
 
     <dependencyManagement>
@@ -87,6 +91,37 @@
             <artifactId>java</artifactId>
             <version>${jqa-java-plugin.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.plantuml</groupId>
+            <artifactId>plantuml</artifactId>
+            <version>${net.sourceforge.plantuml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.elk</groupId>
+            <artifactId>org.eclipse.elk.core</artifactId>
+            <version>${org.eclipse.elk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.elk</groupId>
+            <artifactId>org.eclipse.elk.alg.layered</artifactId>
+            <version>${org.eclipse.elk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.elk</groupId>
+            <artifactId>org.eclipse.elk.alg.mrtree</artifactId>
+            <version>${org.eclipse.elk.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.elk</groupId>
+            <artifactId>org.eclipse.elk.graph</artifactId>
+            <version>${org.eclipse.elk.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

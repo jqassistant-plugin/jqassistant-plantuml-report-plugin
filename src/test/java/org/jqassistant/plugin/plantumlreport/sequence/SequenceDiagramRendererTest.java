@@ -7,7 +7,10 @@ import java.util.Map;
 import com.buschmais.jqassistant.core.report.api.ReportException;
 import com.buschmais.jqassistant.core.report.api.graph.SubGraphFactory;
 import com.buschmais.jqassistant.core.report.api.graph.model.Node;
+import com.buschmais.jqassistant.core.report.api.model.Column;
 import com.buschmais.jqassistant.core.report.api.model.Result;
+import com.buschmais.jqassistant.core.report.api.model.Row;
+import com.buschmais.jqassistant.core.rule.api.model.Concept;
 import com.buschmais.jqassistant.core.rule.api.model.ExecutableRule;
 import com.buschmais.jqassistant.core.store.api.model.Descriptor;
 
@@ -21,6 +24,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static com.buschmais.jqassistant.core.report.api.ReportHelper.toColumn;
+import static com.buschmais.jqassistant.core.report.api.ReportHelper.toRow;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -32,6 +37,8 @@ import static org.mockito.Mockito.mock;
  */
 @ExtendWith(MockitoExtension.class)
 class SequenceDiagramRendererTest {
+
+    private static final Concept CONCEPT = Concept.builder().id("test").build();
 
     @Mock
     private Descriptor p1 = mock(Descriptor.class);
@@ -85,22 +92,22 @@ class SequenceDiagramRendererTest {
     }
 
     private Result<? extends ExecutableRule> getSequenceResult() {
-        Map<String, Object> row1 = new HashMap<>();
-        row1.put("sequence", asList(p1, m1, p2));
-        Map<String, Object> row2 = new HashMap<>();
-        row2.put("sequence", asList(p1, m1, p2, m2, p3));
-        List<Map<String, Object>> rows = asList(row1, row2);
+        Map<String, Column<?>> row1 = new HashMap<>();
+        row1.put("sequence", toColumn(asList(p1, m1, p2)));
+        Map<String, Column<?>> row2 = new HashMap<>();
+        row2.put("sequence", toColumn(asList(p1, m1, p2, m2, p3)));
+        List<Row> rows = asList(toRow(CONCEPT, row1), toRow(CONCEPT, row2));
         return Result.builder().columnNames(asList("sequence")).rows(rows).build();
     }
 
     private Result<? extends ExecutableRule> getParticipantsAndMessagesResult() {
-        Map<String, Object> row1 = new HashMap<>();
-        row1.put("participants", asList(p1, p2));
-        row1.put("messages", asList(m1));
-        Map<String, Object> row2 = new HashMap<>();
-        row2.put("participants", asList(p1, p2, p3));
-        row2.put("messages", asList(m1, m2));
-        List<Map<String, Object>> rows = asList(row1, row2);
+        Map<String,Column<?>> row1 = new HashMap<>();
+        row1.put("participants", toColumn(asList(p1, p2)));
+        row1.put("messages", toColumn(asList(m1)));
+        Map<String, Column<?>> row2 = new HashMap<>();
+        row2.put("participants", toColumn(asList(p1, p2, p3)));
+        row2.put("messages", toColumn(asList(m1, m2)));
+        List<Row> rows = asList(toRow(CONCEPT, row1), toRow(CONCEPT, row2));
         return Result.builder().columnNames(asList("participants", "messages")).rows(rows).build();
     }
 

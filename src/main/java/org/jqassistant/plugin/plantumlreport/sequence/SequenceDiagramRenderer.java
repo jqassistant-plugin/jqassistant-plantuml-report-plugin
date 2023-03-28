@@ -8,7 +8,9 @@ import com.buschmais.jqassistant.core.report.api.graph.model.Identifiable;
 import com.buschmais.jqassistant.core.report.api.graph.model.Node;
 import com.buschmais.jqassistant.core.report.api.graph.model.Relationship;
 import com.buschmais.jqassistant.core.report.api.graph.model.SubGraph;
+import com.buschmais.jqassistant.core.report.api.model.Column;
 import com.buschmais.jqassistant.core.report.api.model.Result;
+import com.buschmais.jqassistant.core.report.api.model.Row;
 import com.buschmais.jqassistant.core.rule.api.model.ExecutableRule;
 import org.jqassistant.plugin.plantumlreport.AbstractDiagramRenderer;
 import org.jqassistant.plugin.plantumlreport.RenderMode;
@@ -35,7 +37,7 @@ public class SequenceDiagramRenderer extends AbstractDiagramRenderer {
 
     @Override
     protected void render(Result<? extends ExecutableRule> result, StringBuilder builder) throws ReportException {
-        List<Map<String, Object>> rows = result.getRows();
+        List<Row> rows = result.getRows();
         Set<Node> participants = new LinkedHashSet<>();
         Set<Relationship> messages = new LinkedHashSet<>();
         convertResult(rows, participants, messages);
@@ -45,12 +47,12 @@ public class SequenceDiagramRenderer extends AbstractDiagramRenderer {
         renderRelationships(messages, builder);
     }
 
-    private void convertResult(List<Map<String, Object>> rows, Set<Node> participants, Set<Relationship> messages) throws ReportException {
-        for (Map<String, Object> row : rows) {
-            List<?> nodes;
-            List<?> relationships;
-            List<?> sequence = (List<?>) row.getOrDefault(COLUMN_SEQUENCE, emptyList());
-            if (!sequence.isEmpty()) {
+    private void convertResult(List<Row> rows, Set<Node> participants, Set<Relationship> messages) throws ReportException {
+        for (Row row : rows) {
+            Column<?> sequenceColumn = row.getColumns()
+                .get(COLUMN_SEQUENCE);
+            if (sequenceColumn != null) {
+                List<?> sequence = sequenceColumn != null ? (List<?>) sequenceColumn.getValue() : emptyList();
                 for (Object value : sequence) {
                     Identifiable identifiable = subGraphFactory.toIdentifiable(value);
                     if (identifiable instanceof Node) {
@@ -60,9 +62,13 @@ public class SequenceDiagramRenderer extends AbstractDiagramRenderer {
                     }
                 }
             } else {
-                nodes = (List<?>) row.getOrDefault(COLUMN_PARTICIPANTS, emptyList());
+                Column<?> nodesColumn = row.getColumns()
+                    .get(COLUMN_PARTICIPANTS);
+                List<?> nodes = nodesColumn != null ? (List<?>) nodesColumn.getValue() : emptyList();
+                Column<?> relationshipsColumn = row.getColumns()
+                    .get(COLUMN_MESSAGES);
+                List<?> relationships = relationshipsColumn != null ? (List<?>) relationshipsColumn.getValue() : emptyList();
                 participants.addAll(convert(nodes, subGraphFactory));
-                relationships = (List<?>) row.getOrDefault(COLUMN_MESSAGES, emptyList());
                 messages.addAll(convert(relationships, subGraphFactory));
             }
         }

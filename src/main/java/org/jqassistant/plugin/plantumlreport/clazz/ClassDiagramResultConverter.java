@@ -7,7 +7,9 @@ import com.buschmais.jqassistant.core.report.api.graph.SubGraphFactory;
 import com.buschmais.jqassistant.core.report.api.graph.model.Identifiable;
 import com.buschmais.jqassistant.core.report.api.graph.model.Node;
 import com.buschmais.jqassistant.core.report.api.graph.model.Relationship;
+import com.buschmais.jqassistant.core.report.api.model.Column;
 import com.buschmais.jqassistant.core.report.api.model.Result;
+import com.buschmais.jqassistant.core.report.api.model.Row;
 import com.buschmais.jqassistant.core.rule.api.model.ExecutableRule;
 import com.buschmais.jqassistant.core.store.api.model.Descriptor;
 import com.buschmais.jqassistant.plugin.common.api.model.FileDescriptor;
@@ -36,10 +38,10 @@ class ClassDiagramResultConverter {
         Map<PackageMemberDescriptor, Node> packageMembers = new LinkedHashMap<>();
         Map<MemberDescriptor, Node> typeMembers = new LinkedHashMap<>();
         Set<Relationship> relations = new LinkedHashSet<>();
-        List<Map<String, Object>> rows = result.getRows();
-        for (Map<String, Object> row : rows) {
-            for (Object value : row.values()) {
-                convertValue(value, packageMembers, typeMembers, relations);
+        List<Row> rows = result.getRows();
+        for (Row row : rows) {
+            for (Column<?> column : row.getColumns().values()) {
+                convertValue(column.getValue(), packageMembers, typeMembers, relations);
             }
         }
         Map<PackageMemberDescriptor, Set<PackageMemberDescriptor>> children = getPackageMemberTree(packageMembers);

@@ -6,7 +6,10 @@ import com.buschmais.jqassistant.core.report.api.ReportException;
 import com.buschmais.jqassistant.core.report.api.graph.SubGraphFactory;
 import com.buschmais.jqassistant.core.report.api.graph.model.Node;
 import com.buschmais.jqassistant.core.report.api.graph.model.Relationship;
+import com.buschmais.jqassistant.core.report.api.model.Column;
 import com.buschmais.jqassistant.core.report.api.model.Result;
+import com.buschmais.jqassistant.core.report.api.model.Row;
+import com.buschmais.jqassistant.core.rule.api.model.Concept;
 import com.buschmais.jqassistant.core.rule.api.model.ExecutableRule;
 import com.buschmais.jqassistant.core.store.api.model.Descriptor;
 import com.buschmais.jqassistant.plugin.java.api.model.*;
@@ -19,6 +22,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static com.buschmais.jqassistant.core.report.api.ReportHelper.toColumn;
+import static com.buschmais.jqassistant.core.report.api.ReportHelper.toRow;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.doReturn;
@@ -31,6 +36,8 @@ class ClassDiagramResultConverterTest {
     private static final String TYPE = "type";
     private static final String MEMBER = "member";
     private static final String RELATION = "relation";
+
+    private static final Concept CONCEPT = Concept.builder().id("test").build();
 
     @Mock
     private SubGraphFactory subGraphFactory;
@@ -84,7 +91,7 @@ class ClassDiagramResultConverterTest {
         Relationship extendsRelation = SubGraphTestHelper.getRelationship(1, typeNode, "EXTENDS", superTypeNode);
         doReturn(extendsRelation).when(subGraphFactory).toIdentifiable(relation);
 
-        List<Map<String, Object>> rows = new ArrayList<>();
+        List<Row> rows = new ArrayList<>();
         addRow(rootPackage, type, field, relation, rows);
         addRow(rootPackage, superType, null, null, rows);
         Result<ExecutableRule> result = Result.builder().columnNames(asList(PACKAGE, TYPE, MEMBER, RELATION)).rows(rows).build();
@@ -128,11 +135,11 @@ class ClassDiagramResultConverterTest {
         Relationship containsRelationship = SubGraphTestHelper.getRelationship(1, rootPackageNode, "CONTAINS", subPackageNode);
         doReturn(containsRelationship).when(subGraphFactory).toIdentifiable(contains);
 
-        List<Map<String, Object>> rows = new ArrayList<>();
-        Map<String, Object> row = new HashMap<>();
-        row.put(PACKAGE, asList(rootPackage, subPackage));
-        row.put(RELATION, asList(contains));
-        rows.add(row);
+        List<Row> rows = new ArrayList<>();
+        Map<String,Column<?>> columns = new HashMap<>();
+        columns.put(PACKAGE, toColumn(asList(rootPackage, subPackage)));
+        columns.put(RELATION, toColumn(asList(contains)));
+        rows.add(toRow(CONCEPT, columns));
         Result<ExecutableRule> result = Result.builder().columnNames(asList(PACKAGE)).rows(rows).build();
 
         // when
@@ -144,12 +151,12 @@ class ClassDiagramResultConverterTest {
     }
 
     private void addRow(PackageDescriptor packageDescriptor, ClassTypeDescriptor typeDescriptor, MemberDescriptor memberDescriptor,
-            CompositeObject relationship, List<Map<String, Object>> rows) {
-        Map<String, Object> row = new HashMap<>();
-        row.put(PACKAGE, packageDescriptor);
-        row.put(TYPE, typeDescriptor);
-        row.put(MEMBER, memberDescriptor);
-        row.put(RELATION, relationship);
-        rows.add(row);
+            CompositeObject relationship, List<Row> rows) {
+        Map<String, Column<?>> columns = new HashMap<>();
+        columns.put(PACKAGE, toColumn(packageDescriptor));
+        columns.put(TYPE, toColumn(typeDescriptor));
+        columns.put(MEMBER, toColumn(memberDescriptor));
+        columns.put(RELATION, toColumn(relationship));
+        rows.add(toRow(CONCEPT, columns));
     }
 }
