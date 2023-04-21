@@ -49,13 +49,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jqa-plugin-common.version>2.0.0-M3</jqa-plugin-common.version>
-        <jqa-java-plugin.version>2.0.0-M3</jqa-java-plugin.version>
+        <jqa-plugin-common.version>2.0.0</jqa-plugin-common.version>
+        <jqa-java-plugin.version>2.0.0</jqa-java-plugin.version>
         <org.jsoup.version>1.10.2</org.jsoup.version>
         <net.sourceforge.plantuml.version>1.2022.12</net.sourceforge.plantuml.version>
         <org.eclipse.elk.version>0.7.1</org.eclipse.elk.version>
 
-        <com.buschmais.jqassistant.version>2.0.0-SNAPSHOT</com.buschmais.jqassistant.version>
+        <com.buschmais.jqassistant.version>2.0.0</com.buschmais.jqassistant.version>
     </properties>
 
     <dependencyManagement>
