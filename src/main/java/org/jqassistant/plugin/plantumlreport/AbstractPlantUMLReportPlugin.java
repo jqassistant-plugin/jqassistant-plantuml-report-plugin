@@ -13,6 +13,8 @@ import com.buschmais.jqassistant.core.rule.api.model.ExecutableRule;
 
 import lombok.extern.slf4j.Slf4j;
 
+import static java.lang.Thread.currentThread;
+
 @Slf4j
 public abstract class AbstractPlantUMLReportPlugin implements ReportPlugin {
 
@@ -43,15 +45,25 @@ public abstract class AbstractPlantUMLReportPlugin implements ReportPlugin {
     @Override
     public void setResult(Result<? extends ExecutableRule> result) throws ReportException {
         String diagram = getRenderer(RenderMode.getRenderMode(renderMode)).renderDiagram(result);
-        ImageRenderer imageRenderer = new ImageRenderer();
-        File file = imageRenderer.renderDiagram(diagram, result.getRule(), directory, fileFormat);
-        URL url;
+
+        // Workaround for https://github.com/jQAssistant/jqa-core-framework/issues/77, can be removed if the issue is resolved
+        ClassLoader contextClassLoader = currentThread().getContextClassLoader();
+        currentThread().setContextClassLoader(this.getClass()
+            .getClassLoader());
         try {
-            url = file.toURI().toURL();
-        } catch (MalformedURLException e) {
-            throw new ReportException("Cannot convert file '" + file.getAbsolutePath() + "' to URL");
+            ImageRenderer imageRenderer = new ImageRenderer();
+            File file = imageRenderer.renderDiagram(diagram, result.getRule(), directory, fileFormat);
+            URL url;
+            try {
+                url = file.toURI()
+                    .toURL();
+            } catch (MalformedURLException e) {
+                throw new ReportException("Cannot convert file '" + file.getAbsolutePath() + "' to URL");
+            }
+            reportContext.addReport(getReportLabel(), result.getRule(), ReportContext.ReportType.IMAGE, url);
+        } finally {
+            currentThread().setContextClassLoader(contextClassLoader);
         }
-        reportContext.addReport(getReportLabel(), result.getRule(), ReportContext.ReportType.IMAGE, url);
     }
 
     protected abstract AbstractDiagramRenderer getRenderer(RenderMode renderMode);
