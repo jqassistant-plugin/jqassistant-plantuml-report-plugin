@@ -15,6 +15,9 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static java.util.Collections.singletonList;
+import static net.sourceforge.plantuml.preproc.Defines.createEmpty;
+
 /**
  * A renderer for PlantUML diagrams.
  */
@@ -22,7 +25,7 @@ public class ImageRenderer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ImageRenderer.class);
 
-    public File renderDiagram(String plantUML, ExecutableRule<?> rule, File directory, String format) throws ReportException {
+    public File renderDiagram(String plantUML, ExecutableRule<?> rule, RenderMode renderMode, File directory, String format) throws ReportException {
         String diagramFileNamePrefix = rule.getId().replaceAll("\\:", "_");
         File plantUMLFile = new File(directory, diagramFileNamePrefix + ".plantuml");
         try {
@@ -34,7 +37,7 @@ public class ImageRenderer {
         FileFormat fileFormat = toFileFormat(format);
         String diagramFileName = diagramFileNamePrefix + fileFormat.getFileSuffix();
         File file = new File(directory, diagramFileName);
-        renderDiagram(plantUML, file, fileFormat);
+        renderDiagram(plantUML, renderMode, file, fileFormat);
         return file;
     }
 
@@ -43,14 +46,16 @@ public class ImageRenderer {
      *
      * @param plantUML
      *     The diagram.
-     * @param format
-     *     The target format.
+     * @param renderMode
+     *     The {@link RenderMode}.
      * @param file
      *     The {@link File}.
+     * @param format
+     *     The target format.
      */
-    private void renderDiagram(String plantUML, File file, FileFormat format) throws ReportException {
+    private void renderDiagram(String plantUML, RenderMode renderMode, File file, FileFormat format) throws ReportException {
         LOGGER.info("Rendering diagram '{}' ", file.getPath());
-        SourceStringReader reader = new SourceStringReader(plantUML);
+        SourceStringReader reader = new SourceStringReader(createEmpty(), plantUML, singletonList(renderMode.getPragma()));
         try (FileOutputStream os = new FileOutputStream(file)) {
             reader.outputImage(os, new FileFormatOption(format));
         } catch (IOException e) {

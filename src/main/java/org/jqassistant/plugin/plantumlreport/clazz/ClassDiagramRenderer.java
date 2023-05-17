@@ -7,9 +7,9 @@ import com.buschmais.jqassistant.core.report.api.graph.model.Node;
 import com.buschmais.jqassistant.core.report.api.graph.model.Relationship;
 import com.buschmais.jqassistant.core.report.api.model.Result;
 import com.buschmais.jqassistant.core.rule.api.model.ExecutableRule;
-import org.jqassistant.plugin.plantumlreport.AbstractDiagramRenderer;
-import org.jqassistant.plugin.plantumlreport.RenderMode;
 import com.buschmais.jqassistant.plugin.java.api.model.*;
+
+import org.jqassistant.plugin.plantumlreport.AbstractDiagramRenderer;
 
 import static java.util.Collections.emptySet;
 
@@ -21,8 +21,7 @@ public class ClassDiagramRenderer extends AbstractDiagramRenderer {
 
     private final Map<String, String> relationTypes;
 
-    public ClassDiagramRenderer(ClassDiagramResultConverter classDiagramResultConverter, RenderMode renderMode) {
-        super(renderMode);
+    public ClassDiagramRenderer(ClassDiagramResultConverter classDiagramResultConverter) {
         this.classDiagramResultConverter = classDiagramResultConverter;
         this.relationTypes = new HashMap<>();
         relationTypes.put("EXTENDS", "--|>");

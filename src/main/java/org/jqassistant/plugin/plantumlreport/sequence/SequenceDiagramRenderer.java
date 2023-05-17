@@ -12,9 +12,8 @@ import com.buschmais.jqassistant.core.report.api.model.Column;
 import com.buschmais.jqassistant.core.report.api.model.Result;
 import com.buschmais.jqassistant.core.report.api.model.Row;
 import com.buschmais.jqassistant.core.rule.api.model.ExecutableRule;
-import org.jqassistant.plugin.plantumlreport.AbstractDiagramRenderer;
-import org.jqassistant.plugin.plantumlreport.RenderMode;
 
+import org.jqassistant.plugin.plantumlreport.AbstractDiagramRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,8 +29,7 @@ public class SequenceDiagramRenderer extends AbstractDiagramRenderer {
 
     private final SubGraphFactory subGraphFactory;
 
-    SequenceDiagramRenderer(SubGraphFactory subGraphFactory, RenderMode renderMode) {
-        super(renderMode);
+    SequenceDiagramRenderer(SubGraphFactory subGraphFactory) {
         this.subGraphFactory = subGraphFactory;
     }
 
@@ -52,7 +50,7 @@ public class SequenceDiagramRenderer extends AbstractDiagramRenderer {
             Column<?> sequenceColumn = row.getColumns()
                 .get(COLUMN_SEQUENCE);
             if (sequenceColumn != null) {
-                List<?> sequence = sequenceColumn != null ? (List<?>) sequenceColumn.getValue() : emptyList();
+                List<?> sequence = (List<?>) sequenceColumn.getValue();
                 for (Object value : sequence) {
                     Identifiable identifiable = subGraphFactory.toIdentifiable(value);
                     if (identifiable instanceof Node) {

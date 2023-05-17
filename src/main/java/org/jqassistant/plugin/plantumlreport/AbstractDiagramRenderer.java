@@ -16,18 +16,6 @@ import static java.util.Arrays.fill;
 
 public abstract class AbstractDiagramRenderer {
 
-    private final RenderMode renderMode;
-
-    /**
-     * Constructor.
-     *
-     * @param renderMode
-     *            The {@link RenderMode} to use.
-     */
-    protected AbstractDiagramRenderer(RenderMode renderMode) {
-        this.renderMode = renderMode;
-    }
-
     /**
      * Render a diagram from the given {@link SubGraph}.
      *
@@ -47,7 +35,6 @@ public abstract class AbstractDiagramRenderer {
         StringBuilder plantumlBuilder = new StringBuilder();
         plantumlBuilder.append("@startuml").append('\n');
         plantumlBuilder.append("skinparam componentStyle uml2").append('\n');
-        plantumlBuilder.append(renderMode.getPragma()).append('\n');
         render(result, plantumlBuilder);
         plantumlBuilder.append("@enduml").append('\n');
         return plantumlBuilder.toString();

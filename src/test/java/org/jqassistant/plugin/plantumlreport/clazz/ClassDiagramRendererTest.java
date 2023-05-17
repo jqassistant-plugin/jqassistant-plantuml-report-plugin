@@ -11,7 +11,6 @@ import com.buschmais.jqassistant.core.report.api.graph.model.Relationship;
 import com.buschmais.jqassistant.core.report.api.model.Result;
 import com.buschmais.jqassistant.plugin.java.api.model.*;
 
-import org.jqassistant.plugin.plantumlreport.RenderMode;
 import org.jqassistant.plugin.plantumlreport.helper.SubGraphTestHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -46,7 +45,7 @@ class ClassDiagramRendererTest {
 
     @BeforeEach
     void setUp() throws ReportException {
-        classDiagramRenderer = new ClassDiagramRenderer(resultConverter, RenderMode.GRAPHVIZ);
+        classDiagramRenderer = new ClassDiagramRenderer(resultConverter);
         packageMembers = new HashMap<>();
         packageMemberTree = new HashMap<>();
         membersPerType = new HashMap<>();

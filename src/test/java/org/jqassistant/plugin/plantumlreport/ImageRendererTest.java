@@ -59,7 +59,7 @@ class ImageRendererTest {
             assertThat(file.delete(), equalTo(true));
         }
         String componentDiagram = "@startuml\n" + "component MyComponent\n" + "@enduml";
-        imageRenderer.renderDiagram(componentDiagram, concept, directory, format);
+        imageRenderer.renderDiagram(componentDiagram, concept, RenderMode.GRAPHVIZ, directory, format);
         return file;
     }
 

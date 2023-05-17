@@ -8,7 +8,6 @@ import com.buschmais.jqassistant.core.report.api.graph.model.SubGraph;
 import com.buschmais.jqassistant.core.report.api.model.Result;
 
 import org.jqassistant.plugin.plantumlreport.ImageRenderer;
-import org.jqassistant.plugin.plantumlreport.RenderMode;
 import org.jqassistant.plugin.plantumlreport.helper.SubGraphTestHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,7 +36,7 @@ class ComponentDiagramRendererTest {
 
     @BeforeEach
     void setUp() {
-        componentDiagramRenderer = new ComponentDiagramRenderer(subGraphFactory, RenderMode.GRAPHVIZ);
+        componentDiagramRenderer = new ComponentDiagramRenderer(subGraphFactory);
     }
 
     @Test

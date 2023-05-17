@@ -44,7 +44,7 @@ public abstract class AbstractPlantUMLReportPlugin implements ReportPlugin {
 
     @Override
     public void setResult(Result<? extends ExecutableRule> result) throws ReportException {
-        String diagram = getRenderer(RenderMode.getRenderMode(renderMode)).renderDiagram(result);
+        String diagram = getRenderer().renderDiagram(result);
 
         // Workaround for https://github.com/jQAssistant/jqa-core-framework/issues/77, can be removed if the issue is resolved
         ClassLoader contextClassLoader = currentThread().getContextClassLoader();
@@ -52,7 +52,7 @@ public abstract class AbstractPlantUMLReportPlugin implements ReportPlugin {
             .getClassLoader());
         try {
             ImageRenderer imageRenderer = new ImageRenderer();
-            File file = imageRenderer.renderDiagram(diagram, result.getRule(), directory, fileFormat);
+            File file = imageRenderer.renderDiagram(diagram, result.getRule(), RenderMode.getRenderMode(renderMode), directory, fileFormat);
             URL url;
             try {
                 url = file.toURI()
@@ -66,7 +66,7 @@ public abstract class AbstractPlantUMLReportPlugin implements ReportPlugin {
         }
     }
 
-    protected abstract AbstractDiagramRenderer getRenderer(RenderMode renderMode);
+    protected abstract AbstractDiagramRenderer getRenderer();
 
     protected abstract String getReportLabel();
 

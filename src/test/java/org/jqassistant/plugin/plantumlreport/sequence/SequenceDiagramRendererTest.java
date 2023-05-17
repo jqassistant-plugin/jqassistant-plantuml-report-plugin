@@ -15,7 +15,6 @@ import com.buschmais.jqassistant.core.rule.api.model.ExecutableRule;
 import com.buschmais.jqassistant.core.store.api.model.Descriptor;
 
 import org.jqassistant.plugin.plantumlreport.ImageRenderer;
-import org.jqassistant.plugin.plantumlreport.RenderMode;
 import org.jqassistant.plugin.plantumlreport.helper.SubGraphTestHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,6 +26,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static com.buschmais.jqassistant.core.report.api.ReportHelper.toColumn;
 import static com.buschmais.jqassistant.core.report.api.ReportHelper.toRow;
 import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.doReturn;
@@ -68,7 +68,7 @@ class SequenceDiagramRendererTest {
         Mockito.doReturn(SubGraphTestHelper.getRelationship(1, n1, "INVOKES", n2)).when(subGraphFactory).toIdentifiable(m1);
         Mockito.doReturn(SubGraphTestHelper.getRelationship(2, n2, "INVOKES", n3)).when(subGraphFactory).toIdentifiable(m2);
 
-        sequenceDiagramRenderer = new SequenceDiagramRenderer(subGraphFactory, RenderMode.GRAPHVIZ);
+        sequenceDiagramRenderer = new SequenceDiagramRenderer(subGraphFactory);
     }
 
     @Test
@@ -97,13 +97,13 @@ class SequenceDiagramRendererTest {
         Map<String, Column<?>> row2 = new HashMap<>();
         row2.put("sequence", toColumn(asList(p1, m1, p2, m2, p3)));
         List<Row> rows = asList(toRow(CONCEPT, row1), toRow(CONCEPT, row2));
-        return Result.builder().columnNames(asList("sequence")).rows(rows).build();
+        return Result.builder().columnNames(singletonList("sequence")).rows(rows).build();
     }
 
     private Result<? extends ExecutableRule> getParticipantsAndMessagesResult() {
         Map<String,Column<?>> row1 = new HashMap<>();
         row1.put("participants", toColumn(asList(p1, p2)));
-        row1.put("messages", toColumn(asList(m1)));
+        row1.put("messages", toColumn(singletonList(m1)));
         Map<String, Column<?>> row2 = new HashMap<>();
         row2.put("participants", toColumn(asList(p1, p2, p3)));
         row2.put("messages", toColumn(asList(m1, m2)));
