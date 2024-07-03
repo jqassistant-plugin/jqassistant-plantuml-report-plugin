@@ -22,3 +22,9 @@ jqassistant:
       version: ${jqassistant.plantuml-report-plugin.version}
 ----
 <1> Dependency to the PlantUML Report plugin
+
+== Changelog
+
+=== 2.0.0
+
+- Extracted PlantUML report plugin from https://github.com/jqassistant-plugin/jqassistant-asciidoc-report-plugin[Asciidoc report plugin] to
