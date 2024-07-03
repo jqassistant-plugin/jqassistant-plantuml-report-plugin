@@ -27,4 +27,4 @@ jqassistant:
 
 === 2.0.0
 
-- Extracted PlantUML report plugin from https://github.com/jqassistant-plugin/jqassistant-asciidoc-report-plugin[Asciidoc report plugin] to
+- Extracted PlantUML report plugin from https://github.com/jqassistant-plugin/jqassistant-asciidoc-report-plugin[Asciidoc report plugin] to dedicated plugin
