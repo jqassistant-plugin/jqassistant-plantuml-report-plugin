@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jqassistant.plugin</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0</version>
+        <version>2.3.0</version>
         <relativePath />
     </parent>
 
@@ -49,8 +49,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jqa-plugin-common.version>2.0.0</jqa-plugin-common.version>
-        <jqa-java-plugin.version>2.0.0</jqa-java-plugin.version>
         <org.jsoup.version>1.10.2</org.jsoup.version>
         <net.sourceforge.plantuml.version>1.2022.12</net.sourceforge.plantuml.version>
         <org.eclipse.elk.version>0.7.1</org.eclipse.elk.version>
@@ -58,12 +56,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>3.5</version>
-                <scope>provided</scope>
-            </dependency>
             <!-- unit tests -->
             <dependency>
                 <groupId>org.jsoup</groupId>
@@ -79,15 +71,18 @@
             <artifactId>test</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.buschmais.jqassistant.plugin</groupId>
             <artifactId>common</artifactId>
             <scope>provided</scope>
-            <version>${jqa-plugin-common.version}</version>
         </dependency>
         <dependency>
             <groupId>com.buschmais.jqassistant.plugin</groupId>
             <artifactId>java</artifactId>
-            <version>${jqa-java-plugin.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -138,6 +133,7 @@
         <dependency>
             <groupId>com.buschmais.xo</groupId>
             <artifactId>xo.api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -164,6 +160,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
