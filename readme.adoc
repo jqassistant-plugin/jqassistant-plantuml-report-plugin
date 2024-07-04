@@ -172,6 +172,7 @@ The PlantUML Report plugin accepts several options that might be passed as repor
 | plantuml.report.format     | Specifies the output file format of the generated PlantUML-Diagrams (optional)                                               | SVG
 | plantuml.report.rendermode | Specifies the renderer used for the generated PlantUML-Diagrams, currently supporting GraphViz (default), Smetana, and Elk   | GRAPHVIZ
 |===
+
 == Changelog
 
 === 2.0.0
