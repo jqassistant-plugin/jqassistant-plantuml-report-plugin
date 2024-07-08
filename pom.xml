@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>jqassistant-plantuml-report-plugin</artifactId>
-    <version>X.Y.Z</version>
+    <version>X.Y.Z-SNAPSHOT</version>
 
     <name>jQAssistant PlantUML Report Plugin</name>
     <description>The jQAssistant plugin for rendering PlantUML diagrams from rule results.</description>
@@ -44,7 +44,7 @@
         <connection>scm:git:https://github.com/jqassistant-plugin/jqassistant-plantuml-report-plugin.git</connection>
         <developerConnection>scm:git:https://github.com/jqassistant-plugin/jqassistant-plantuml-report-plugin.git</developerConnection>
         <url>https://github.com/jqassistant-plugin/jqassistant-plantuml-report-plugin</url>
-        <tag>X.Y.Z</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
