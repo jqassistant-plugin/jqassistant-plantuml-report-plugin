@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+*.iml
+pom.xml.updatetonextdevversion
+pom.xml.updatetorelease
+*.backup
+
+# Ignore temporary shell scripts used to script small tasks
+*.sh.ignore
+
+# Maven related files and directories
+target
+/.mvn

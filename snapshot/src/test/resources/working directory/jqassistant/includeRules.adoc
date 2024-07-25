@@ -1,0 +1,10 @@
+:toc: left
+= Rules
+
+== Included Rules
+
+include::jQA:Rules[concepts="test:Included*",constraints="test:Included*"]
+
+== Other Stuff
+
+

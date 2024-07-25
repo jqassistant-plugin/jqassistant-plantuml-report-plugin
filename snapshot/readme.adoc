@@ -1,0 +1,180 @@
+= jQAssistant PlantUML Report Plugin
+
+This is the https://plantuml.com/[PlantUML^] report plugin for https://jqassistant.org[jQAssistant^].
+
+It provides the capability to render diagrams from the results of concepts and constraints:
+
+* `plantuml-component-diagram`
+* `plantuml-class-diagram`
+* `plantuml-sequence-diagram`
+
+For more information on jQAssistant see https://jqassistant.org[^].
+
+== Using the jqassistant-plantuml-report-plugin
+
+[source, yaml]
+..jqassistant.yml
+----
+jqassistant:
+  plugins:
+    - group-id: org.jqassistant.plugin <1>
+      artifact-id: jqassistant-plantuml-report-plugin
+      version: ${jqassistant.plantuml-report-plugin.version}
+----
+<1> Dependency to the PlantUML Report plugin
+
+
+The plugin provides support for generating the following diagrams from rule results:
+
+* <<ComponentDiagrams>>
+* <<ClassDiagrams>>
+* <<SequenceDiagrams>>
+
+NOTE: This feature is based on http://plantuml.com/[PlantUML] which itself relies on http://www.graphviz.org[Graphviz].
+The latter needs to be installed and the `dot` executable must be present on the system path.
+
+[[ComponentDiagrams]]
+=== Component Diagrams
+
+To activate component diagram rendering the report type must be set to `plantuml-component-diagram`.
+The result of the rule simply needs to return all required nodes and their relationships:
+
+.jqassistant/index.adoc
+....
+[[DependencyDiagram]]
+[source,cypher,role=concept,requiresConcepts="dependency:Package",reportType="plantuml-component-diagram"] // <1>
+.Creates a diagram about dependencies between packages containing Java types (test artifacts are excluded).
+----
+MATCH
+  (artifact:Main:Artifact)-[:CONTAINS]->(package:Package)-[:CONTAINS]->(:Type)
+OPTIONAL MATCH
+  (package)-[dependsOn:DEPENDS_ON]->(:Package)
+RETURN
+  package, dependsOn                                                                                           // <2>
+----
+....
+<1> The report type is set to `plantuml-component-diagram`.
+<2> The packages are returned as nodes and their dependencies (dependsOn) as relationships.
+
+The result might also specify graph-alike structures which will be rendered as PlantUML folders.
+The following example therefore uses a modified return clause:
+
+.jqassistant/index.adoc
+....
+[[DependencyPerArtifactDiagram]]
+[source,cypher,role=concept,requiresConcepts="dependency:Package",reportType="plantuml-component-diagram"]
+.Creates a diagram about dependencies between packages containing Java types (per artifact, test artifacts are excluded).
+----
+MATCH
+  (artifact:Main:Artifact)-[:CONTAINS]->(package:Package)-[:CONTAINS]->(:Type)
+OPTIONAL MATCH
+  (package)-[dependsOn:DEPENDS_ON]->(:Package)
+RETURN
+  {                                   // <1>
+    role : "graph",                   // <2>
+    parent : artifact,                // <3>
+    nodes : collect(package),         // <4>
+    relationships: collect(dependsOn) // <5>
+  }
+----
+....
+<1> Instead of nodes and relations a map-like structure is returned
+<2> `role` determines that the map shall be interpreted as graph containing nodes and relationships
+<3> `parent` specifies the node that shall be rendered as folder, i.e. the container of nodes
+<4> `nodes` are the nodes to be included in the folder
+<5> `relationships` are the relationships between the nodes, they may reference nodes of other parents/folders
+
+[[ClassDiagrams]]
+=== Class Diagrams
+
+To activate class diagram rendering the report type must be set to `plantuml-class-diagram`.
+The result may contain any of the following elements:
+
+* Packages (`:Java:Package`)
+* Types (`:Java:Type`)
+* Members (`:Java:Member`, `:Java:Field`, `:Java:Method`)
+* Inheritance relations between types (`:EXTENDS`, `:IMPLEMENTS`)
+* any other type relations (rendered as associations)
+
+.jqassistant/index.adoc
+....
+[[ClassDiagram]]
+[source,cypher,role=concept,requiresConcepts="java:InnerType",reportType="plantuml-class-diagram"]
+.Creates a class diagram.
+----
+MATCH
+  (p:Package)-[:CONTAINS]->(t:Type)-[:DECLARES]->(m:Member) // <1>
+WHERE NOT
+  t:Inner
+OPTIONAL MATCH
+  (t)-[e:EXTENDS|IMPLEMENTS]->(:Type)                       // <2>
+OPTIONAL MATCH
+  (t)-[d:DEPENDS_ON]->(:Type)                               // <3>
+RETURN
+  *
+----
+....
+<1> Matches Java packages, types and their declared members
+<2> Optionally include super classes and implemented interfaces
+<3> Optionally include any dependencies, rendered as associations
+
+[[SequenceDiagrams]]
+=== Sequence Diagrams
+
+To activate sequence diagram rendering the report type must be set to `plantuml-sequence-diagram`.
+The result of the rule must return a column `sequence` containing a path-structure:
+
+.jqassistant/index.adoc
+....
+[[SequenceDiagram]]
+[source,cypher,role=concept,reportType="plantuml-sequence-diagram"]
+.Creates a sequence diagram.
+----
+MATCH
+  (type:Type{name:"MyService"})-[:DECLARES]->(root:Method{signature:"void doSomething()"}),
+  sequence=(root)-[:INVOKES*]->(:Method)
+RETURN
+  sequence // <1>
+----
+....
+<1> The sequence to convert to a diagram
+
+NOTE: The sequence diagram is sensitive to the order of participants and messages.
+The diagram rendering algorithm therefore relies on a depth-first result structure as provided by the `path` function.
+All elements are rendered in the order of their first occurrence.
+
+If a path cannot be returned directly the result may provide the columns `participants` (nodes) and `messages` (relationships):
+
+.jqassistant/index.adoc
+....
+[[SequenceDiagram]]
+[source,cypher,role=concept,reportType="plantuml-sequence-diagram"]
+.Creates a sequence diagram.
+----
+MATCH
+  (type:Type{name:"MyService"})-[:DECLARES]->(root:Method{signature:"void doSomething()"}),
+  sequence=(root)-[:INVOKES*]->(:Method)
+RETURN
+  nodes(sequence) as participants      // <1>
+  relationships(sequence) as messages  // <2>
+----
+....
+<1> The list of participants
+<2> The list of messages exchanged between the participants
+
+=== Configuration
+
+The PlantUML Report plugin accepts several options that might be passed as report properties to jQAssistant:
+
+[options="header"]
+|===
+| Property                   | Description                                                                                                                  | Default
+| plantuml.report.format     | Specifies the output file format of the generated PlantUML-Diagrams (optional)                                               | SVG
+| plantuml.report.rendermode | Specifies the renderer used for the generated PlantUML-Diagrams, currently supporting GraphViz (default), Smetana, and Elk   | GRAPHVIZ
+|===
+
+== Changelog
+
+=== 2.0.0
+
+- Extracted PlantUML report plugin from https://github.com/jqassistant-plugin/jqassistant-asciidoc-report-plugin[Asciidoc report plugin] to dedicated plugin

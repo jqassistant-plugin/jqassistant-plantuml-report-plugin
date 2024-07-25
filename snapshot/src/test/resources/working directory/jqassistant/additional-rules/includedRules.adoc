@@ -1,0 +1,30 @@
+= Rules
+
+[[test:IncludedConcept]]
+[source,cypher,role=concept]
+.Included Concept
+----
+MATCH (n) RETURN n
+----
+
+[[test:IncludedConstraint]]
+[source,cypher,role=constraint]
+.Included Constraint
+----
+MATCH (n) RETURN n
+----
+
+[[test:NonIncludedConcept]]
+[source,cypher,role=concept]
+.NonIncluded Concept
+----
+MATCH (n) RETURN n
+----
+
+[[test:NonIncludedConstraint]]
+[source,cypher,role=constraint]
+.NonIncluded Constraint
+----
+MATCH (n) RETURN n
+----
+

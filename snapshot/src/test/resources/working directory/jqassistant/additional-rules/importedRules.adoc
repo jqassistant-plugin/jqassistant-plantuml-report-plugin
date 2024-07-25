@@ -1,0 +1,22 @@
+= Rules
+
+[[test:ImportedConcept]]
+[source,cypher,role=concept]
+.Imported Concept
+----
+MATCH (n) RETURN n as ImportedConceptValue
+----
+
+[[test:ImportedConstraint]]
+[source,cypher,role=constraint]
+.Imported Constraint
+----
+MATCH (n) RETURN n as ImportedConstraintValue
+----
+
+[[test:ImportedConstraintWithoutDescription]]
+[source,cypher,role=constraint]
+----
+MATCH (n) RETURN n as ImportedConstraintValue
+----
+

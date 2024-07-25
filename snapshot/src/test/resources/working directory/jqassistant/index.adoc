@@ -1,0 +1,53 @@
+:toc: left
+= Rules
+
+== Summary
+
+include::jQA:Summary[]
+
+== Embedded Rules
+
+[[test:Concept]]
+[source,cypher,role=concept,requiresConcepts="test:ImportedConcept"]
+.Concept Description
+----
+MATCH (n) RETURN n as Value
+----
+
+[[test:Constraint]]
+[source,cypher,role=constraint]
+.Constraint Description
+----
+MATCH (n) RETURN n as Value
+----
+
+== Included Rules
+
+include::jQA:Rules[concepts="test:Included*",constraints="test:Included*"]
+
+== Reports
+
+[[test:ComponentDiagram]]
+[source,cypher,role=concept,reportType="plantuml-component-diagram"]
+.Component Diagram Description
+----
+MATCH
+  (n)
+OPTIONAL MATCH
+  (n)-[d:DEPENDS_ON]->()
+RETURN
+  n as Node, d as DependsOn
+----
+
+== Imported Rules
+
+include::jQA:ImportedRules[]
+
+== Corner Cases
+
+=== Definition List
+
+// Definition lists cause problems
+Item1:: Description of item1
+Item2:: Description of item2
+
