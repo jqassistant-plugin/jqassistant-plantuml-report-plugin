@@ -49,9 +49,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.jsoup.version>1.10.2</org.jsoup.version>
+        <org.jsoup.version>1.18.1</org.jsoup.version>
         <net.sourceforge.plantuml.version>1.2022.12</net.sourceforge.plantuml.version>
-        <org.eclipse.elk.version>0.9.1</org.eclipse.elk.version>
+        <org.eclipse.elk.version>0.7.1</org.eclipse.elk.version>
     </properties>
 
     <dependencyManagement>
