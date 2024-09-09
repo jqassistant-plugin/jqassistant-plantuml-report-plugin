@@ -50,7 +50,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.jsoup.version>1.10.2</org.jsoup.version>
-        <net.sourceforge.plantuml.version>1.2022.12</net.sourceforge.plantuml.version>
+        <net.sourceforge.plantuml.version>1.2024.7</net.sourceforge.plantuml.version>
         <org.eclipse.elk.version>0.7.1</org.eclipse.elk.version>
     </properties>
 
