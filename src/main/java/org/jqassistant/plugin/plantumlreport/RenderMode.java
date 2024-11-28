@@ -6,7 +6,7 @@ import java.util.List;
 import com.buschmais.jqassistant.core.report.api.ReportException;
 
 import lombok.extern.slf4j.Slf4j;
-import net.sourceforge.plantuml.cucadiagram.dot.GraphvizUtils;
+import net.sourceforge.plantuml.dot.GraphvizUtils;
 
 import static java.util.Arrays.asList;
 
@@ -43,14 +43,15 @@ public enum RenderMode {
      * Returns the {@link RenderMode} for the given string
      *
      * @param renderMode
-     *            The {@link RenderMode} as string.
+     *     The {@link RenderMode} as string.
      * @return The matching {@link RenderMode}
      * @throws ReportException
-     *             If renderMode is not valid.
+     *     If renderMode is not valid.
      */
     private static RenderMode fromString(String renderMode) throws ReportException {
         for (RenderMode mode : RenderMode.values()) {
-            if (mode.name().equalsIgnoreCase(renderMode)) {
+            if (mode.name()
+                .equalsIgnoreCase(renderMode)) {
                 return mode;
             }
         }
