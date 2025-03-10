@@ -13,7 +13,7 @@
 
     <name>jQAssistant PlantUML Report Plugin</name>
     <description>The jQAssistant plugin for rendering PlantUML diagrams from rule results.</description>
-    <url>https://jqassistant.org/</url>
+    <url>https://github.com/jqassistant-plugin/jqassistant-plantuml-report-plugin</url>
 
     <organization>
         <name>jQAssistant Development Team</name>
