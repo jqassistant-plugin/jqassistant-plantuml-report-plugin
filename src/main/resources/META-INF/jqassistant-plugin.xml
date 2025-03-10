@@ -3,7 +3,7 @@
                     xsi:schemaLocation="http://schema.jqassistant.org/plugin/v1.10 https://schema.jqassistant.org/plugin/jqassistant-plugin-v1.10.xsd"
                     name="jQAssistant PlantUML Report Plugin" id="jqa.plugin.plantuml"
                     version="${project.version}">
-    <description>Provides reports to render class, component and sequence diagrams from rule results.</description>
+    <description>${project.description}</description>
     <report>
         <class id="plantuml-component-diagram">org.jqassistant.plugin.plantumlreport.component.ComponentDiagramReportPlugin</class>
         <class id="plantuml-sequence-diagram">org.jqassistant.plugin.plantumlreport.sequence.SequenceDiagramReportPlugin</class>
