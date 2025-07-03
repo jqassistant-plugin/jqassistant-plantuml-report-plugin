@@ -1,11 +1,9 @@
 package org.jqassistant.plugin.plantumlreport;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.buschmais.jqassistant.core.report.api.ReportException;
 
 import lombok.extern.slf4j.Slf4j;
+import net.sourceforge.plantuml.crash.ReportLog;
 import net.sourceforge.plantuml.dot.GraphvizUtils;
 
 import static java.util.Arrays.asList;
@@ -59,10 +57,10 @@ public enum RenderMode {
     }
 
     private static boolean verifyGraphviz() {
-        List<String> results = new ArrayList<>();
-        if (GraphvizUtils.addDotStatus(results, false) != 0) {
-            for (String result : results) {
-                log.info(result);
+        ReportLog reportLog = new ReportLog();
+        if (GraphvizUtils.addDotStatus(reportLog, false) != 0) {
+            for (String s : reportLog) {
+                log.info(s);
             }
             return false;
         }
