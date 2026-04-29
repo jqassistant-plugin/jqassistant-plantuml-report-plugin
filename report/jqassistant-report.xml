@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jqassistant-report xmlns="http://schema.jqassistant.org/report/v2.9">
+  <context>
+    <build>
+      <name>jQAssistant PlantUML Report Plugin</name>
+      <timestamp>2026-04-29T17:54:53.911Z</timestamp>
+      <properties></properties>
+    </build>
+  </context>
+  <group id="jqassistant-plugin:Default" date="2026-04-29T17:55:51">
+    <group id="jqassistant-plugin-maven:Default" date="2026-04-29T17:55:51">
+      <constraint id="jqassistant-plugin-maven:GroupId">
+        <description>The groupId for jQAssistant plugin Maven projects must follow the pattern 'org.jqassistant.plugin.&lt;project&gt;'.</description>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="2">major</severity>
+        <duration>109</duration>
+      </constraint>
+      <concept id="jqassistant-plugin-maven:ParentProject" abstract="false">
+        <description>Labels all Maven projects which declare "org.jqassistant.plugin:parent" as parent module with "Parent".</description>
+        <result>
+          <columns count="1" primary="parent">
+            <column>parent</column>
+          </columns>
+          <rows count="1">
+            <row key="0ded4b8295d08ebb47840db3ab9b3e64e2c92058cb652b681b37c9e6b4820e88">
+              <column name="parent">
+                <element language="Generic">Named</element>
+                <source fileName="/home/runner/work/jqassistant-plantuml-report-plugin/jqassistant-plantuml-report-plugin"></source>
+                <value>jQAssistant PlantUML Report Plugin</value>
+              </column>
+            </row>
+          </rows>
+        </result>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>1</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>130</duration>
+      </concept>
+      <constraint id="jqassistant-plugin-maven:MavenModulesMustUseParentGroupId">
+        <description>All Maven projects must define the same groupId as the parent of the plugin project.</description>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="2">major</severity>
+        <duration>81</duration>
+        <required-concept id="jqassistant-plugin-maven:ParentProject">
+          <status>success</status>
+        </required-concept>
+      </constraint>
+      <constraint id="jqassistant-plugin-maven:ParentProjectMustDefineDeveloper">
+        <description>At least one developer must be specified in the "developers" section of the parent pom.xml of a plugin project.</description>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="2">major</severity>
+        <duration>80</duration>
+        <required-concept id="jqassistant-plugin-maven:ParentProject">
+          <status>success</status>
+        </required-concept>
+      </constraint>
+      <constraint id="jqassistant-plugin-maven:ParentProjectMustDefineScmSection">
+        <description>A SCM section having both connection and developerConnection set to "scm:git:https://github.com/jqassistant-plugin/_repository-name_" must be specified in the parent pom.xml of a plugin project.</description>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="2">major</severity>
+        <duration>117</duration>
+        <required-concept id="jqassistant-plugin-maven:ParentProject">
+          <status>success</status>
+        </required-concept>
+      </constraint>
+      <constraint id="jqassistant-plugin-maven:ParentProjectMustDefineUrl">
+        <description>The project URL must be defined in the parent pom.xml of a plugin project.</description>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="2">major</severity>
+        <duration>199</duration>
+        <required-concept id="jqassistant-plugin-maven:ParentProject">
+          <status>success</status>
+        </required-concept>
+      </constraint>
+      <duration>937</duration>
+    </group>
+    <group id="jqassistant-plugin-test:Default" date="2026-04-29T17:55:52">
+      <concept id="junit5:ParameterizedTestMethod" abstract="false">
+        <description>Finds all test methods (i.e. annotated with "@org.junit.jupiter.api.ParameterizedTest") and
+labels them with "Test", "Parameterized", and "Junit5".</description>
+        <verificationResult>
+          <success>false</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>77</duration>
+      </concept>
+      <concept id="junit5:TestMethod" abstract="false">
+        <description>Finds all test methods (i.e. annotated with "@org.junit.jupiter.api.Test") and
+labels them with "Test" and "Junit5".</description>
+        <result>
+          <columns count="1" primary="Test">
+            <column>Test</column>
+          </columns>
+          <rows count="24">
+            <row key="e77bba84a2b3674ca04d8b49714a472986da78de0baa2fdc2f1c5c71a92404bd">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/component/ComponentDiagramRendererTest.java" startLine="58" endLine="83">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void componentDiagramInFolder()</value>
+              </column>
+            </row>
+            <row key="b4fdb7c1ccbfe20547faeebde71d1041e82bb723eae44b4d6cd332dd2807bb31">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/RenderModeTest.java" startLine="25" endLine="27">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void elk()</value>
+              </column>
+            </row>
+            <row key="548aad1b23624a310c5d551fd763d5168f9ebe1a14765d20da461491cc99e7cb">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/ImageRendererTest.java" startLine="50" endLine="51">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void renderDiagramUnknownFormat()</value>
+              </column>
+            </row>
+            <row key="58a4f509dc2b061d6b745e8b9f383abf8982918e52cc1ed595850d6a93b0e513">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/component/ComponentDiagramRendererTest.java" startLine="87" endLine="101">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void extraCharacters()</value>
+              </column>
+            </row>
+            <row key="c1e3178e037b4bcb276265798ad412da655c7ec09ab36ff19abb2160730d566b">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/clazz/ClassDiagramRendererTest.java" startLine="106" endLine="107">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void methods()</value>
+              </column>
+            </row>
+            <row key="8ebdb7e9600599d5c9b68ece927d5c8427021f83641d9ee35c1479eafcfee681">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/ImageRendererTest.java" startLine="23" endLine="26">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void renderDiagramAsSvg()</value>
+              </column>
+            </row>
+            <row key="0bfd1553d9ef58c0b3fbd32bcfd9c3a54a6f0c5132593884510fdaaa8e521b1f">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/clazz/ClassDiagramResultConverterTest.java" startLine="126" endLine="151">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void convertIterable()</value>
+              </column>
+            </row>
+            <row key="4e7a85eaf010600758c6379b5c7ad574242dafb65fb40e55061c66060c07af2e">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/RenderModeTest.java" startLine="37" endLine="38">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void unsupportedRenderer()</value>
+              </column>
+            </row>
+            <row key="e1eb125ad176dc92252e45e84e1eefdcf4449ac170fab5a15747bd2cdca457a2">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/RenderModeTest.java" startLine="31" endLine="33">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void graphviz()</value>
+              </column>
+            </row>
+            <row key="8b2d6daf11488f440d5433da706311d9f24968372c71d7a4cde0cb67819cbdf3">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/RenderModeTest.java" startLine="19" endLine="21">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void smetana()</value>
+              </column>
+            </row>
+            <row key="93e0fa2c6741c868ede9df4772759cd7c233b5dd0a376768d1081ba18151fa83">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/clazz/ClassDiagramRendererTest.java" startLine="111" endLine="118">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void abstractMethod()</value>
+              </column>
+            </row>
+            <row key="7e9787cf1edafcd9a0a301867a28e0784aa39f6249d53e3b1798dfb42c3cec32">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/ImageRendererTest.java" startLine="37" endLine="41">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void renderDiagramDefaultFormat()</value>
+              </column>
+            </row>
+            <row key="fdcf143b177b37eeb10037c6ee6a3390b600d215ab96884dc6e2ea461b9e8425">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/sequence/SequenceDiagramRendererTest.java" startLine="76" endLine="77">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void sequenceDiagramFromSequence()</value>
+              </column>
+            </row>
+            <row key="3ec05ddd4e82d397b4c8ca90f0fc93bea2724c9c61fc4c8800a5689add5b2751">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/ImageRendererTest.java" startLine="30" endLine="33">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void renderDiagramAsPng()</value>
+              </column>
+            </row>
+            <row key="05a6f3e52cb797b5d69d70ad19941f7c39a3a117fea7e12c62a3c97bdf16fe4e">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/clazz/ClassDiagramRendererTest.java" startLine="101" endLine="102">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void fields()</value>
+              </column>
+            </row>
+            <row key="11ef4440272c607ca63aadee23054c01ca5395369803d0da5961c2a3c1805963">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/ImageRendererTest.java" startLine="45" endLine="46">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void renderDiagramEmptyFormat()</value>
+              </column>
+            </row>
+            <row key="8d0538cc27243b470e8ac0d389f8afd6989773bcf70e74cc0871aa64a3449ee6">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/clazz/ClassDiagramRendererTest.java" startLine="143" endLine="162">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void relations()</value>
+              </column>
+            </row>
+            <row key="8f6e43e68a005abee0b6c4adda7855095afdb5dfb6145a0e28cf6f5b236f5ea3">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/clazz/ClassDiagramResultConverterTest.java" startLine="67" endLine="121">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void convert()</value>
+              </column>
+            </row>
+            <row key="9df1fb81613079fda0fa92e8873c952d71f46fb4d13c5441cd9e3b5e50a93f79">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/clazz/ClassDiagramRendererTest.java" startLine="60" endLine="77">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void packageMembers()</value>
+              </column>
+            </row>
+            <row key="11f5d1b3b6f92443f6a7fd693e480c78499703ef689bc581e1bb3d53845580d5">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/sequence/SequenceDiagramRendererTest.java" startLine="81" endLine="82">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void sequenceDiagramFromParticipantsAndMessages()</value>
+              </column>
+            </row>
+            <row key="3da477e00a979bcc336658051e682a92ffa83231df6c239e6027b500fd6d022a">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/clazz/ClassDiagramRendererTest.java" startLine="81" endLine="97">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void classModifiers()</value>
+              </column>
+            </row>
+            <row key="3b517f9556f7a7529fa40b850c1f0f05cc611082d3814a7e47de45b3d914b2b0">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/RenderModeTest.java" startLine="14" endLine="15">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void detect()</value>
+              </column>
+            </row>
+            <row key="66c6686c22ff05aa9ecd112786f4806c2d7c200e55d52ca4563caca0bdbf45cc">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/clazz/ClassDiagramRendererTest.java" startLine="122" endLine="139">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void fieldAssociation()</value>
+              </column>
+            </row>
+            <row key="c606922c64999a4b97b7fbf95ef096e3066a0576e6f30ca4cc32cfb6e7ab4891">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/component/ComponentDiagramRendererTest.java" startLine="44" endLine="54">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void componentDiagram()</value>
+              </column>
+            </row>
+          </rows>
+        </result>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>24</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>97</duration>
+      </concept>
+      <concept id="junit5:TestTemplateMethod" abstract="false">
+        <description>Labels all methods annotated by "@org.junit.jupiter.api.TestTemplate"
+with "Junit5", "Test" and "Template".</description>
+        <verificationResult>
+          <success>false</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>103</duration>
+      </concept>
+      <concept id="junit5:RepeatedTestMethod" abstract="false">
+        <description>Finds all test methods (i.e. annotated with "@org.junit.jupiter.api.RepeatedTest") and
+labels them with "Test", "Repeated", and "Junit5".</description>
+        <verificationResult>
+          <success>false</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>57</duration>
+      </concept>
+      <concept id="junit5:TestClass" abstract="false">
+        <description>Labels all classes containing test methods with "Test" and "Junit5".</description>
+        <result>
+          <columns count="2" primary="TestClass">
+            <column>TestClass</column>
+            <column>TestMethods</column>
+          </columns>
+          <rows count="6">
+            <row key="70f2d529dd9acb30fcf53314f8a56402a65d901e13cb402de2740ecc26ff9637">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/RenderModeTest.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.plantumlreport.RenderModeTest</value>
+              </column>
+              <column name="TestMethods">
+                <value>void detect(), void smetana(), void elk(), void graphviz(), void unsupportedRenderer()</value>
+              </column>
+            </row>
+            <row key="3053222048494e5cf671f2a30c3c2e45fbb600b2adfc55e2a86c7f85570851b5">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/sequence/SequenceDiagramRendererTest.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.plantumlreport.sequence.SequenceDiagramRendererTest</value>
+              </column>
+              <column name="TestMethods">
+                <value>void sequenceDiagramFromSequence(), void sequenceDiagramFromParticipantsAndMessages()</value>
+              </column>
+            </row>
+            <row key="16307a77cae6f2e924904dc02b1e293ca8c5d06c43f59a63d1187d4d893e12ba">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/component/ComponentDiagramRendererTest.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.plantumlreport.component.ComponentDiagramRendererTest</value>
+              </column>
+              <column name="TestMethods">
+                <value>void componentDiagram(), void componentDiagramInFolder(), void extraCharacters()</value>
+              </column>
+            </row>
+            <row key="05c3b4861bfd5ecb475f9ca46a8b496fc653408c9f4de005bf08863cc93d98fd">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/ImageRendererTest.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.plantumlreport.ImageRendererTest</value>
+              </column>
+              <column name="TestMethods">
+                <value>void renderDiagramAsSvg(), void renderDiagramAsPng(), void renderDiagramDefaultFormat(), void renderDiagramEmptyFormat(), void renderDiagramUnknownFormat()</value>
+              </column>
+            </row>
+            <row key="9fb47324035355db6f664e0f63f6a141bd8b80790d100f9c47e51fa15511b66e">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/clazz/ClassDiagramRendererTest.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.plantumlreport.clazz.ClassDiagramRendererTest</value>
+              </column>
+              <column name="TestMethods">
+                <value>void packageMembers(), void classModifiers(), void fields(), void methods(), void abstractMethod(), void fieldAssociation(), void relations()</value>
+              </column>
+            </row>
+            <row key="bd2fd8f0e1795e3612e61174dab9e21ab155da74dcf40b40e9577fc02f09b8c7">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/plantumlreport/clazz/ClassDiagramResultConverterTest.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="test-jar" version="2.1.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.plantumlreport.clazz.ClassDiagramResultConverterTest</value>
+              </column>
+              <column name="TestMethods">
+                <value>void convert(), void convertIterable()</value>
+              </column>
+            </row>
+          </rows>
+        </result>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>6</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>93</duration>
+        <required-concept id="junit5:ParameterizedTestMethod">
+          <status>success</status>
+        </required-concept>
+        <required-concept id="junit5:TestMethod">
+          <status>success</status>
+        </required-concept>
+        <required-concept id="junit5:TestTemplateMethod">
+          <status>success</status>
+        </required-concept>
+        <required-concept id="junit5:RepeatedTestMethod">
+          <status>success</status>
+        </required-concept>
+      </concept>
+      <concept id="jqassistant-plugin-test:IT" abstract="false">
+        <description>Adds a label "IntegrationTest" to all non-abstract classes deriving from AbstractPluginIT or AbstractJavaPluginIT.</description>
+        <verificationResult>
+          <success>false</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>120</duration>
+        <required-concept id="junit5:TestClass">
+          <status>success</status>
+        </required-concept>
+      </concept>
+      <constraint id="jqassistant-plugin-test:IntegrationTestClassSuffix">
+        <description>All integration test classes must have the name suffix "IT" for being executed using the Maven Failsafe Plugin.</description>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="2">major</severity>
+        <duration>31</duration>
+        <required-concept id="jqassistant-plugin-test:IT">
+          <status>success</status>
+        </required-concept>
+      </constraint>
+      <duration>633</duration>
+    </group>
+    <group id="jqassistant-plugin-plugin:Default" date="2026-04-29T17:55:53">
+      <concept id="neo4j:Procedure" abstract="false">
+        <description>Labels all types annotated with "@org.neo4j.procedure.Procedure" with `Neo4j` and `Procedure`.</description>
+        <verificationResult>
+          <success>false</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>52</duration>
+      </concept>
+      <concept id="jqassistant-plugin-plugin:PluginDescriptor" abstract="false">
+        <description>Labels jQAssistant plugin descriptor files with `jQAssistant` and `PluginDescriptor`.</description>
+        <result>
+          <columns count="2" primary="Artifact">
+            <column>Artifact</column>
+            <column>PluginDescriptor</column>
+          </columns>
+          <rows count="1">
+            <row key="ab48fb50173382a4bbd3d40d6c263b16cd81d48bd85c7ae3334197ae39f17a31">
+              <column name="Artifact">
+                <element language="Generic">ArtifactFile</element>
+                <source fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT.jar"></source>
+                <value>org.jqassistant.plugin:jqassistant-plantuml-report-plugin:jar:2.1.0-SNAPSHOT</value>
+              </column>
+              <column name="PluginDescriptor">
+                <element language="Generic">File</element>
+                <source fileName="/META-INF/jqassistant-plugin.xml">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-plantuml-report-plugin/2.1.0-SNAPSHOT/jqassistant-plantuml-report-plugin-2.1.0-SNAPSHOT.jar" group="org.jqassistant.plugin" name="jqassistant-plantuml-report-plugin" type="jar" version="2.1.0-SNAPSHOT"></parent>
+                </source>
+                <value>/META-INF/jqassistant-plugin.xml</value>
+              </column>
+            </row>
+          </rows>
+        </result>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>1</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>58</duration>
+      </concept>
+      <concept id="jqassistant-plugin-plugin:PluginRegistersProcedure" abstract="false">
+        <description>Creates a `REGISTERS` relation between all procedure class elements of the jQAssistant plugin
+            descriptor to the matching Java type.</description>
+        <verificationResult>
+          <success>false</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>168</duration>
+        <required-concept id="jqassistant-plugin-plugin:PluginDescriptor">
+          <status>success</status>
+        </required-concept>
+      </concept>
+      <constraint id="jqassistant-plugin-plugin:Neo4jProceduresMustBeRegistered">
+        <description>Types declaring Neo4j procedures must be registered.</description>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="2">major</severity>
+        <duration>60</duration>
+        <required-concept id="neo4j:Procedure">
+          <status>success</status>
+        </required-concept>
+        <required-concept id="jqassistant-plugin-plugin:PluginRegistersProcedure">
+          <status>success</status>
+        </required-concept>
+      </constraint>
+      <concept id="neo4j:UserFunction" abstract="false">
+        <description>Labels all types annotated with "@org.neo4j.procedure.UserFunction" with `Neo4j` and
+            `UserFunction`.</description>
+        <verificationResult>
+          <success>false</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>50</duration>
+      </concept>
+      <concept id="jqassistant-plugin-plugin:PluginRegistersUserFunction" abstract="false">
+        <description>Creates a `REGISTERS` relation between all function class elements of the jQAssistant plugin
+            descriptor to the matching Java type.</description>
+        <verificationResult>
+          <success>false</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="4">info</severity>
+        <duration>172</duration>
+        <required-concept id="jqassistant-plugin-plugin:PluginDescriptor">
+          <status>success</status>
+        </required-concept>
+      </concept>
+      <constraint id="jqassistant-plugin-plugin:Neo4jUserFunctionsMustBeRegistered">
+        <description>Types declaring Neo4j user functions must be registered.</description>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="2">major</severity>
+        <duration>66</duration>
+        <required-concept id="neo4j:UserFunction">
+          <status>success</status>
+        </required-concept>
+        <required-concept id="jqassistant-plugin-plugin:PluginRegistersUserFunction">
+          <status>success</status>
+        </required-concept>
+      </constraint>
+      <constraint id="jqassistant-plugin-plugin:PluginDescriptorShouldProvideVersion">
+        <description>The jQAssistant XML Plugin descriptor ("/META-INF/jqassistant-plugin.xml") should provide a "version" attribute for its root element.</description>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="3">minor</severity>
+        <duration>219</duration>
+        <required-concept id="jqassistant-plugin-plugin:PluginDescriptor">
+          <status>success</status>
+        </required-concept>
+      </constraint>
+      <duration>902</duration>
+    </group>
+    <group id="jqassistant-plugin-package:Default" date="2026-04-29T17:55:54">
+      <concept id="java:GeneratedLombokType" abstract="false">
+        <description>Labels types generated by Lombok as 'Generated' (requires 'lombok.addLombokGeneratedAnnotation=true' in 'lombok.config').</description>
+        <result>
+          <columns count="1" primary="GeneratedTypes">
+            <column>GeneratedTypes</column>
+          </columns>
+          <rows count="1">
+            <row key="c9819fc9f7afdd12fb8b1bf21ffa06a62c38f5ead35377310bbcbae0f10c61df">
+              <column name="GeneratedTypes">
+                <value>1</value>
+              </column>
+            </row>
+          </rows>
+        </result>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>1</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="3">minor</severity>
+        <duration>67</duration>
+      </concept>
+      <concept id="java:GeneratedType" abstract="false">
+        <description>Reports the count of types labeled with `Generated`, grouped by containing artifact.</description>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="3">minor</severity>
+        <duration>1</duration>
+        <providing-concept id="java:GeneratedLombokType">
+          <status>success</status>
+        </providing-concept>
+      </concept>
+      <constraint id="jqassistant-plugin-package:PackagesMustHaveGroupIdPrefix">
+        <description>All package names used in a Maven project must start with the groupId.</description>
+        <verificationResult>
+          <success>true</success>
+          <rowCount>0</rowCount>
+        </verificationResult>
+        <status>success</status>
+        <severity level="2">major</severity>
+        <duration>110</duration>
+        <required-concept id="java:GeneratedType">
+          <status>success</status>
+        </required-concept>
+      </constraint>
+      <duration>197</duration>
+    </group>
+    <duration>199</duration>
+  </group>
+</jqassistant-report>
